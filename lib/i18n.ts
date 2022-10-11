@@ -8,6 +8,7 @@ await i18next
     fallbackLng: 'en',
     preload: ['zh', 'en'],
     backend: {
+      // todo: use deno file system api to load all files
       loadPath: 'locales/{{lng}}.yml'
     }
   })
