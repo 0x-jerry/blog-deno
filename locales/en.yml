@@ -1,0 +1,30 @@
+WIP: Working In Progress.
+button:
+  back: Go back
+language: English
+menu:
+  title:
+    about: About me
+    archive: Archive
+    email: Email
+    github: Github
+    notes: Notes
+    posts: Posts
+    tags: Tags
+    timeline: Timeline
+motto: >-
+  Life was like a box of chocolates. <br /> You never know what you're gonna
+  get.
+name: 0x-Jerry
+not-found: Not found
+title:
+  archive: "{{name}}'s archive"
+  index: "{{name}}'s Blog"
+  notes: "{{name}}'s Notes"
+  posts: "{{name}}'s Posts"
+  tag: Tag - {{name}}
+  tags: "{{name}}'s Tags"
+  timeline: "{{name}}'s Timeline"
+
+time:
+  minutes: minutes

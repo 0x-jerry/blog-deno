@@ -1,0 +1,27 @@
+WIP: Working In Progress.
+button:
+  back: 返回
+language: 中文
+menu:
+  title:
+    about: 关于
+    archive: 归档
+    email: 邮箱
+    github: Github
+    notes: 笔记
+    posts: 文章
+    tags: 标签
+    timeline: 时间线
+motto: 人生就像一盒巧克力，你永远不知道里面装的是什么。
+name: 0x-Jerry
+not-found: 丢失了
+time:
+  minutes: 分钟
+title:
+  archive: '{{name}} 的归档'
+  index: '{{name}} 的博客'
+  notes: '{{name}} 的笔记'
+  posts: '{{name}} 的文章'
+  tag: 标签 - {{name}}
+  tags: '{{name}} 的标签'
+  timeline: '{{name}} 的世界线'
