@@ -11,9 +11,9 @@ interface PageData {
 }
 
 export const handler: Handlers<PageData> = {
-  async GET(req, ctx) {
+  async GET(_, ctx) {
     const posts = await getPosts()
-    const tag = ctx.params.name
+    const tag = decodeURIComponent(ctx.params.name)
 
     return ctx.render({
       tag,
