@@ -70,7 +70,7 @@ export function DefaultLayout(
 
           <div class='my-6'>
             <div class='text-gray-500 text-center'>
-              © 2017-{dayjs().year()} @{' '}
+              © 2022-{dayjs().year()} @{' '}
               <Link href={`mailto:${config.email}`}>{config.name}</Link>. Built
               top on{' '}
               <Link href='https://deno.land' target='_blank'>
