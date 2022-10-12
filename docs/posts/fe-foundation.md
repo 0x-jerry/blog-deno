@@ -1,7 +1,7 @@
 ---
 title: 对于前端工程的思考
 date: 2021-12-14T02:47:47.000Z
-tags: [web, foundation]
+tags: [Web, Foundation]
 publish: true
 ---
 

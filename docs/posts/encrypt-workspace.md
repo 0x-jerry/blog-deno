@@ -1,7 +1,7 @@
 ---
 title: 加密工作区的实现方案
 date: 2021-12-25T15:48:57.000Z
-tags: [encrypt, workspace, vscode]
+tags: [Encrypt, WorkSpace, VSCode]
 ---
 
 自己有时候会写一些私人笔记，但又习惯用 `vscode` 来码字。也习惯了 `github` 来管理版本，存储也就直接选择同步到 `github` 了。

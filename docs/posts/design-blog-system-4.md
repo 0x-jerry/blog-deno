@@ -1,7 +1,7 @@
 ---
 title: 设计一个像 hexo 的博客系统(4)
 date: 2021-10-26T07:43:57.000Z
-tags: [blog, system-design]
+tags: [Blog, System Design]
 ---
 
 接 [前篇](./design-blog-system-3.md)，距离上一次更新，差不多快一个月了，咕咕咕 :)。

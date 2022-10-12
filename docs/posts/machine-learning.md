@@ -1,6 +1,6 @@
 ---
 title: 机器学习 ML
-tags: [ml]
+tags: [ML]
 date: 2021-08-10T07:13:46.000Z
 ---
 

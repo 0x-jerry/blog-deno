@@ -1,7 +1,7 @@
 ---
 title: 设计一个像 hexo 的博客系统(2)
 date: 2021-09-27T02:16:47.000Z
-tags: [blog, system-design]
+tags: [Blog, System Design]
 ---
 
 [前篇](./design-blog-system.md) 中的想法，貌似有点行不通，其中一个难点则是怎么去动态的传输 `Markdown` 文件的数据。

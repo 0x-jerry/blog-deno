@@ -1,7 +1,7 @@
 ---
 title: 微前端
 date: 2021-05-31T18:03:01.122Z
-tags: [micro-frontend, web]
+tags: [Micro Frontend, Web]
 ---
 
 本文尝试分享一下「微前端」这个概念，以及目前（2021-06-01）主要的几种实现方案。

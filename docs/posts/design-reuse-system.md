@@ -1,7 +1,7 @@
 ---
 title: 尝试设计一个高度复用的系统
 date: 2021-09-28T11:10:46.000Z
-tags: [system-design]
+tags: [System Design]
 ---
 
 哎，接手公司的项目接的有点烦了，唠嗑两句，随便看看就行啦。

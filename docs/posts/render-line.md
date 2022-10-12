@@ -1,6 +1,6 @@
 ---
 title: VSCode 如何渲染代码
-tags: [vscode, js, virtual-list, performance]
+tags: [VSCode, JavaScript, Virtual List, Performance]
 date: 2021-09-09T07:13:46.000Z
 ---
 

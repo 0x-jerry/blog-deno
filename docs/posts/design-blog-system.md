@@ -1,7 +1,7 @@
 ---
 title: 设计一个像 hexo 的博客系统(1)
 date: 2021-09-26T07:37:40.000Z
-tags: [blog, system-design]
+tags: [Blog, System Design]
 ---
 
 本文尝试设计一个博客框架，以解决在使用 [Hexo] 时不痛快的点。

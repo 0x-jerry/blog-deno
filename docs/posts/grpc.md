@@ -1,7 +1,7 @@
 ---
 title: gRPC 在 JS 中的应用
 date: 2022-04-28T15:13:02.588Z
-tags: [gRPC, typescript]
+tags: [gRPC, TypeScript]
 publish: true
 ---
 

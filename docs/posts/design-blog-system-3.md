@@ -1,7 +1,7 @@
 ---
 title: 设计一个像 hexo 的博客系统(3)
 date: 2021-09-28T03:11:43.000Z
-tags: [blog, system-design]
+tags: [Blog, System Design]
 ---
 
 接 [前篇](./design-blog-system-2.md)，在利用 `Vite` 系统的虚拟文件时，碰到一些小问题。所以抛弃虚拟文件，
