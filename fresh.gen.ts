@@ -9,8 +9,7 @@ import * as $2 from "./routes/posts/[name].tsx";
 import * as $3 from "./routes/posts/_middleware.ts";
 import * as $4 from "./routes/tags/[name].tsx";
 import * as $$0 from "./islands/ChangeLng.tsx";
-import * as $$1 from "./islands/Counter.tsx";
-import * as $$2 from "./islands/GoBack.tsx";
+import * as $$1 from "./islands/GoBack.tsx";
 
 const manifest = {
   routes: {
@@ -22,8 +21,7 @@ const manifest = {
   },
   islands: {
     "./islands/ChangeLng.tsx": $$0,
-    "./islands/Counter.tsx": $$1,
-    "./islands/GoBack.tsx": $$2,
+    "./islands/GoBack.tsx": $$1,
   },
   baseUrl: import.meta.url,
   config,
