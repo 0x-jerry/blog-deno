@@ -5,7 +5,7 @@ import { extract as frontMatter } from '$std/encoding/front_matter.ts'
 marked.use({
   renderer: {
     link(href, title, text) {
-      const isAbs= /^https?:\/\//.test(href || '')
+      const isAbs = /^https?:\/\//.test(href || '')
 
       if (!isAbs) {
         if (href && /\.md$/.test(href)) {
@@ -13,7 +13,9 @@ marked.use({
         }
         return `<a href="${href}" title="${title || href}">${text}</a>`
       } else {
-        return `<a href="${href}" target="_blank" title="${title || href}" >${text}</a>`
+        return `<a href="${href}" target="_blank" title="${
+          title || href
+        }" >${text}</a>`
       }
     }
   }
