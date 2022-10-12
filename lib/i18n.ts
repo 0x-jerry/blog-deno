@@ -1,17 +1,28 @@
 import i18next, { TFunction } from 'https://esm.sh/i18next@21.10.0'
-import Backend from 'https://esm.sh/i18next-fs-backend@1.1.5'
+import { parse } from '$std/encoding/yaml.ts'
+import { fromFileUrl } from '$std/path/mod.ts'
 
-await i18next
-  .use(Backend)
-  .init({
-    initImmediate: false, // setting initImediate to false, will load the resources synchronously
-    fallbackLng: 'en',
-    preload: ['zh', 'en'],
-    backend: {
-      // todo: use deno file system api to load all files
-      loadPath: 'locales/{{lng}}.yml'
+async function loadLng(lng: string) {
+  const url = fromFileUrl(import.meta.resolve(`../locales/${lng}.yml`))
+
+  const txt = await Deno.readTextFile(url)
+
+  const r = await parse(txt)
+  return r as any
+}
+
+await i18next.init({
+  initImmediate: false, // setting initImediate to false, will load the resources synchronously
+  fallbackLng: 'en',
+  resources: {
+    zh: {
+      translation: await loadLng('zh'),
+    },
+    en: {
+      translation: await loadLng('en')
     }
-  })
+  }
+})
 
 export const i18nConf = {
   lng: Intl.DateTimeFormat().resolvedOptions().locale
