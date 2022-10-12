@@ -1,5 +1,6 @@
 import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
+import { Icon } from '../../components/Icon.tsx'
 import { DefaultLayout } from '../../components/Layout.tsx'
 import { Tag } from '../../components/Tag.tsx'
 import { render } from '../../lib/markdown.ts'
@@ -22,12 +23,17 @@ export const handler: Handlers<PageData> = {
 
 export default function Post({ data }: PageProps<PageData>) {
   const PostTitle = () => (
-    <div class='flex gap-1 items-end'>
-      <h1 class='text-2xl'>{data.data.title}</h1>
-      {data.data.tags?.map((tag) => (
-        <Tag href={`/tags/${tag}`}>{tag}</Tag>
-      ))}
-    </div>
+    <>
+      <a href='/' class='mr-2 flex'>
+        <Icon background name='carbon:arrow-left'></Icon>
+      </a>
+      <div class='flex gap-1 items-end'>
+        <h1 class='text-2xl'>{data.data.title}</h1>
+        {data.data.tags?.map((tag) => (
+          <Tag href={`/tags/${tag}`}>{tag}</Tag>
+        ))}
+      </div>
+    </>
   )
 
   return (

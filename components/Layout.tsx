@@ -9,7 +9,7 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
   return (
     <div {...props} className='h-screen'>
       <div class='h-full w-8 border(r gray-100)'></div>
-      <div class='h-full w-72 border(r gray-100) flex(& col) items-center pt-32 px-6'>
+      <div class='h-full w-72 border(r gray-100) flex(& col) items-center pt-32 px-6 bg-gray-50'>
         <a href='/'>
           <img
             class='rounded-full w-40 transition duration-1000 rotate(0 hover:[360deg])'
@@ -46,7 +46,9 @@ export function DefaultLayout(
 
     return (
       <>
-        {titleEl}
+        <div class='flex items-center gap-1'>
+          {titleEl}
+        </div>
         <hr class='mt-2 mb-4' />
       </>
     )
@@ -59,7 +61,7 @@ export function DefaultLayout(
       </Head>
       <div>
         <Sidebar class='hidden sm:flex fixed left-0 top-0'></Sidebar>
-        <div class='pl-0 sm:pl-80 mx-10 pt-3'>
+        <div class='ml-0 sm:ml-80 px-10 pt-3'>
           {renderTitle(props.title)}
 
           {props.children}
