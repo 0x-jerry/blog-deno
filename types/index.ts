@@ -5,3 +5,8 @@ export interface PostMatter {
   license?: string
   publish?: boolean
 }
+
+export interface PostItem {
+  path: string
+  data: PostMatter
+}

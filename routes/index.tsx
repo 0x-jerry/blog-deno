@@ -1,19 +1,14 @@
 import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
-import { fromFileUrl, join } from '$std/path/mod.ts'
 import { DefaultLayout } from '../components/Layout.tsx'
 import { config } from '../conf.ts'
 import { t } from '../lib/i18n.ts'
-import { frontMatter } from '../lib/markdown.ts'
-import { PostMatter } from '../types/index.ts'
-import dayjs from "dayjs"
+import { PostItem } from '../types/index.ts'
+import dayjs from 'dayjs'
 import { Tag } from '../components/Tag.tsx'
 import { Link } from '../components/Link.tsx'
-
-interface PostItem {
-  path: string
-  data: PostMatter
-}
+import { getPosts } from '../utils/posts.ts'
+import PostItemLink from '../components/PostItemLink.tsx'
 
 interface PageData {
   list: PostItem[]
@@ -21,38 +16,15 @@ interface PageData {
 
 export const handler: Handlers<PageData> = {
   async GET(_, ctx) {
-    const folder = fromFileUrl(import.meta.resolve('../docs/posts'))
+    let posts = await getPosts()
 
-    const files = Deno.readDir(folder)
+    posts = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 
-    let list: PostItem[] = []
-
-    for await (const file of files) {
-      if (file.isFile && file.name.endsWith('.md')) {
-        const filePath = join(folder, file.name)
-        const txt = await Deno.readTextFile(filePath)
-        const matter = frontMatter<PostMatter>(txt)
-
-        const name = file.name.slice(0, -'.md'.length)
-
-        list.push({
-          path: name,
-          data: matter.attrs
-        })
-      }
-    }
-
-    list = list
-      .filter((a) => a.data.publish !== false)
-      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-
-    return ctx.render({ list })
+    return ctx.render({ list: posts })
   }
 }
 
 export default function Home({ data }: PageProps<PageData>) {
-  const PostTitle = <div></div>
-
   return (
     <>
       <Head>
@@ -69,20 +41,7 @@ export default function Home({ data }: PageProps<PageData>) {
       <DefaultLayout title={t('title.index', { name: config.name })}>
         <div class='flex(& col) gap-2'>
           {data.list.map((item) => (
-            <div class='flex gap-1'>
-              <Link href={`posts/${item.path}`}>{item.data.title}</Link>
-              {item.data.tags?.length && (
-                <span class='flex gap-1 items-center'>
-                  <Tag color='blue'>
-                    {dayjs(item.data.date).format('YYYY-MM-DD')}
-                  </Tag>
-
-                  {item.data.tags.map((tag) => (
-                    <Tag href={`/tags/${tag}`}>{tag}</Tag>
-                  ))}
-                </span>
-              )}
-            </div>
+            <PostItemLink {...item}></PostItemLink>
           ))}
         </div>
       </DefaultLayout>

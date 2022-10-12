@@ -4,6 +4,7 @@ import { JSX, RenderableProps } from 'preact'
 import { config } from '../conf.ts'
 import dayjs from 'dayjs'
 import { Link } from './Link.tsx'
+import GoBack from '../islands/GoBack.tsx'
 
 export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
   return (
@@ -32,7 +33,7 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
 }
 
 export function DefaultLayout(
-  props: RenderableProps<{ title?: string | JSX.Element }>
+  props: RenderableProps<{ title?: string | JSX.Element; showBack?: boolean }>
 ) {
   const renderTitle = (title?: string | JSX.Element) => {
     if (!title) return ''
@@ -47,6 +48,7 @@ export function DefaultLayout(
     return (
       <>
         <div class='flex items-center gap-1'>
+          {props.showBack && <GoBack class='mr-2 flex'></GoBack>}
           {titleEl}
         </div>
         <hr class='mt-2 mb-4' />
