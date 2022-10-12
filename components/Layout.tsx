@@ -62,8 +62,8 @@ export function DefaultLayout(
         <script src='https://code.iconify.design/3/3.0.0/iconify.min.js'></script>
       </Head>
       <div>
-        <Sidebar class='hidden sm:flex fixed left-0 top-0'></Sidebar>
-        <div class='ml-0 sm:ml-80 px-10 pt-3 min-h-screen flex(& col)'>
+        <Sidebar class='hidden lg:flex fixed left-0 top-0'></Sidebar>
+        <div class='ml-0 lg:ml-80 px-10 pt-3 min-h-screen flex(& col)'>
           {renderTitle(props.title)}
 
           <div class='flex-1'>{props.children}</div>
