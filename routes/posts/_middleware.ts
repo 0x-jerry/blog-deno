@@ -1,6 +1,6 @@
 // routes/_middleware.ts
 import { MiddlewareHandlerContext } from '$fresh/server.ts'
-import * as path from 'https://deno.land/std@0.159.0/path/mod.ts'
+import * as path from "$std/path/mod.ts"
 
 interface State {
   data: string
@@ -22,7 +22,7 @@ export async function handler(
 
       const res = new Response(r)
 
-      res.headers.set('cache-control', ' max-age=604800')
+      res.headers.set('Cache-Control', 'max-age=604800, public')
       return res
     } catch (_error) {
       // console.log(file, error)

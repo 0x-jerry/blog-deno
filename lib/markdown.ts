@@ -1,16 +1,24 @@
-import * as path from 'https://deno.land/std@0.159.0/path/mod.ts'
+import * as path from '$std/path/mod.ts'
 import { marked } from 'https://esm.sh/marked@4.1.1?dts'
+import { extract as frontMatter } from '$std/encoding/front_matter.ts'
 
 marked.use()
 
-export async function render(file: string) {
+export async function render<T>(file: string) {
   const base = path.fromFileUrl(import.meta.url)
 
   const filePath = path.join(base, '../../docs', file)
 
   const txt = await Deno.readTextFile(filePath)
 
-  const result = marked.parse(txt)
+  const data = frontMatter(txt)
 
-  return result
+  const result = marked.parse(data.body)
+
+  return {
+    data: data.attrs as T,
+    content: result
+  }
 }
+
+export { frontMatter }

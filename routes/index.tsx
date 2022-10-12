@@ -1,6 +1,6 @@
 import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
-import { fromFileUrl } from 'https://deno.land/std@0.150.0/path/mod.ts'
+import { fromFileUrl } from "$std/path/mod.ts"
 import ChangeLng from '../islands/ChangeLng.tsx'
 import { t } from '../lib/i18n.ts'
 
@@ -35,7 +35,7 @@ export default function Home({ data }: PageProps<PageData>) {
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css'
           integrity='sha512-KUoB3bZ1XRBYj1QcH4BHCQjurAZnCO3WdrswyLDtp7BMwCw7dPZngSLqILf68SGgvnWHTD5pPaYrXi6wiRJ65g=='
-          crossorigin='anonymous'
+          crossOrigin='anonymous'
           referrerpolicy='no-referrer'
         />
       </Head>

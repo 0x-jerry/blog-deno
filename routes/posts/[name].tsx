@@ -5,16 +5,23 @@ import { t } from '../../lib/i18n.ts'
 import { render } from '../../lib/markdown.ts'
 
 interface PageData {
-  markdown: string
+  data: MarkdownMatter
+  content: string
+}
+
+interface MarkdownMatter {
+  title?: string
+  date?: Date
+  tags?: string[]
 }
 
 export const handler: Handlers<PageData> = {
   async GET(req, ctx) {
     const filename = new URL(req.url).pathname
 
-    const markdown = await render(`${filename}.md`)
+    const markdown = await render<MarkdownMatter>(`${filename}.md`)
 
-    return ctx.render({ markdown })
+    return ctx.render(markdown)
   }
 }
 
@@ -27,11 +34,11 @@ export default function Post({ data }: PageProps<PageData>) {
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css'
           integrity='sha512-KUoB3bZ1XRBYj1QcH4BHCQjurAZnCO3WdrswyLDtp7BMwCw7dPZngSLqILf68SGgvnWHTD5pPaYrXi6wiRJ65g=='
-          crossorigin='anonymous'
+          crossOrigin='anonymous'
           referrerpolicy='no-referrer'
         />
       </Head>
-      <div class="px-20">
+      <div class='px-20'>
         <div>
           <ChangeLng />
         </div>
@@ -40,7 +47,7 @@ export default function Post({ data }: PageProps<PageData>) {
 
         <div
           class='markdown-body'
-          dangerouslySetInnerHTML={{ __html: data.markdown }}
+          dangerouslySetInnerHTML={{ __html: data.content }}
         ></div>
       </div>
     </>
