@@ -1,25 +1,21 @@
 import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
+import { DefaultLayout } from '../../components/Layout.tsx'
 import ChangeLng from '../../islands/ChangeLng.tsx'
 import { t } from '../../lib/i18n.ts'
 import { render } from '../../lib/markdown.ts'
+import { PostMatter } from '../../types/index.ts'
 
 interface PageData {
-  data: MarkdownMatter
+  data: PostMatter
   content: string
-}
-
-interface MarkdownMatter {
-  title?: string
-  date?: Date
-  tags?: string[]
 }
 
 export const handler: Handlers<PageData> = {
   async GET(req, ctx) {
     const filename = new URL(req.url).pathname
 
-    const markdown = await render<MarkdownMatter>(`${filename}.md`)
+    const markdown = await render<PostMatter>(`${filename}.md`)
 
     return ctx.render(markdown)
   }
@@ -29,7 +25,7 @@ export default function Post({ data }: PageProps<PageData>) {
   return (
     <>
       <Head>
-        <title>Fresh App</title>
+        <title>{data.data.title}</title>
         <link
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css'
@@ -38,18 +34,12 @@ export default function Post({ data }: PageProps<PageData>) {
           referrerpolicy='no-referrer'
         />
       </Head>
-      <div class='px-20'>
-        <div>
-          <ChangeLng />
-        </div>
-
-        <div>{t('title.index', { name: '0x-jerry' })}</div>
-
+      <DefaultLayout>
         <div
           class='markdown-body'
           dangerouslySetInnerHTML={{ __html: data.content }}
         ></div>
-      </div>
+      </DefaultLayout>
     </>
   )
 }
