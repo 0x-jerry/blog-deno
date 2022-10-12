@@ -1,8 +1,7 @@
 import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { DefaultLayout } from '../../components/Layout.tsx'
-import ChangeLng from '../../islands/ChangeLng.tsx'
-import { t } from '../../lib/i18n.ts'
+import { Tag } from '../../components/Tag.tsx'
 import { render } from '../../lib/markdown.ts'
 import { PostMatter } from '../../types/index.ts'
 
@@ -22,6 +21,15 @@ export const handler: Handlers<PageData> = {
 }
 
 export default function Post({ data }: PageProps<PageData>) {
+  const PostTitle = () => (
+    <div class='flex gap-1 items-end'>
+      <h1 class='text-2xl'>{data.data.title}</h1>
+      {data.data.tags?.map((tag) => (
+        <Tag href={`/tags/${tag}`}>{tag}</Tag>
+      ))}
+    </div>
+  )
+
   return (
     <>
       <Head>
@@ -34,7 +42,7 @@ export default function Post({ data }: PageProps<PageData>) {
           referrerpolicy='no-referrer'
         />
       </Head>
-      <DefaultLayout>
+      <DefaultLayout title={PostTitle()}>
         <div
           class='markdown-body'
           dangerouslySetInnerHTML={{ __html: data.content }}

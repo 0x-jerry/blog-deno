@@ -2,6 +2,8 @@ import { Head } from '$fresh/runtime.ts'
 import { Icon } from './Icon.tsx'
 import { JSX, RenderableProps } from 'preact'
 import { config } from '../conf.ts'
+import dayjs from 'dayjs'
+import { Link } from './Link.tsx'
 
 export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
   return (
@@ -29,7 +31,27 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
   )
 }
 
-export function DefaultLayout(props: RenderableProps<{ title?: string }>) {
+export function DefaultLayout(
+  props: RenderableProps<{ title?: string | JSX.Element }>
+) {
+  const renderTitle = (title?: string | JSX.Element) => {
+    if (!title) return ''
+
+    const titleEl =
+      typeof title === 'string' ? (
+        <h1 class='text-2xl'>{props.title}</h1>
+      ) : (
+        title
+      )
+
+    return (
+      <>
+        {titleEl}
+        <hr class='mt-2 mb-4' />
+      </>
+    )
+  }
+
   return (
     <>
       <Head>
@@ -38,14 +60,25 @@ export function DefaultLayout(props: RenderableProps<{ title?: string }>) {
       <div>
         <Sidebar class='hidden sm:flex fixed left-0 top-0'></Sidebar>
         <div class='pl-0 sm:pl-80 mx-10 pt-3'>
-          {props.title && (
-            <>
-              <h1 class='text-2xl'>{props.title}</h1>
-              <hr class='mt-2 mb-4' />
-            </>
-          )}
+          {renderTitle(props.title)}
 
           {props.children}
+
+          <div class='my-6'>
+            <div class='text-gray-500 text-center'>
+              © 2017-{dayjs().year()} @{' '}
+              <Link href={`mailto:${config.email}`}>{config.name}</Link>. Built
+              top on{' '}
+              <Link href='https://deno.land' target='_blank'>
+                deno
+              </Link>{' '}
+              and{' '}
+              <Link href='https://fresh.deno.dev' target='_blank'>
+                fresh
+              </Link>
+              .
+            </div>
+          </div>
         </div>
       </div>
     </>

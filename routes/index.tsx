@@ -6,7 +6,9 @@ import { config } from '../conf.ts'
 import { t } from '../lib/i18n.ts'
 import { frontMatter } from '../lib/markdown.ts'
 import { PostMatter } from '../types/index.ts'
-import dayjs from 'https://esm.sh/dayjs@1.11.5'
+import dayjs from "dayjs"
+import { Tag } from '../components/Tag.tsx'
+import { Link } from '../components/Link.tsx'
 
 interface PostItem {
   path: string
@@ -49,6 +51,8 @@ export const handler: Handlers<PageData> = {
 }
 
 export default function Home({ data }: PageProps<PageData>) {
+  const PostTitle = <div></div>
+
   return (
     <>
       <Head>
@@ -61,28 +65,20 @@ export default function Home({ data }: PageProps<PageData>) {
           referrerpolicy='no-referrer'
         />
       </Head>
+
       <DefaultLayout title={t('title.index', { name: config.name })}>
         <div class='flex(& col) gap-2'>
           {data.list.map((item) => (
             <div class='flex gap-1'>
-              <a
-                class='text(blue-500 hover:blue-600)'
-                href={`posts/${item.path}`}
-              >
-                {item.data.title}
-              </a>
+              <Link href={`posts/${item.path}`}>{item.data.title}</Link>
               {item.data.tags?.length && (
                 <span class='flex gap-1 items-center'>
-                  <span class='border(1 blue-100) rounded bg-blue-50 text(xs gray-500) px-2'>
+                  <Tag color='blue'>
                     {dayjs(item.data.date).format('YYYY-MM-DD')}
-                  </span>
+                  </Tag>
 
                   {item.data.tags.map((tag) => (
-                    <a href={`/tags/${tag}`}>
-                      <span class='border(1 gray-100) rounded bg-gray-50 text(xs gray-500) px-2'>
-                        {tag}
-                      </span>
-                    </a>
+                    <Tag href={`/tags/${tag}`}>{tag}</Tag>
                   ))}
                 </span>
               )}
