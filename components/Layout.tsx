@@ -63,10 +63,10 @@ export function DefaultLayout(
       </Head>
       <div>
         <Sidebar class='hidden sm:flex fixed left-0 top-0'></Sidebar>
-        <div class='ml-0 sm:ml-80 px-10 pt-3'>
+        <div class='ml-0 sm:ml-80 px-10 pt-3 min-h-screen flex(& col)'>
           {renderTitle(props.title)}
 
-          {props.children}
+          <div class='flex-1'>{props.children}</div>
 
           <div class='my-6'>
             <div class='text-gray-500 text-center'>
