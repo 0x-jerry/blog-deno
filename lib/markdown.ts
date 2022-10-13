@@ -21,14 +21,27 @@ marked.use({
   }
 })
 
-export async function render<T>(file: string) {
+export async function renderPost<T>(file: string) {
   const base = path.fromFileUrl(import.meta.url)
 
   const filePath = path.join(base, '../../docs', file)
 
-  const txt = await Deno.readTextFile(filePath)
+  return await render<T>(filePath)
+}
 
-  const data = frontMatter(txt)
+export async function render<T>(file: string) {
+  const txt = await Deno.readTextFile(file)
+
+  const data = (() => {
+    try {
+      return frontMatter(txt)
+    } catch (_error) {
+      return {
+        body: txt,
+        attrs: {}
+      }
+    }
+  })()
 
   const result = marked.parse(data.body)
 

@@ -99,28 +99,36 @@ export function DefaultLayout(
 
   return (
     <BlankLayout>
+      <Head>
+        {typeof props.title === 'string' && <title>{props.title}</title>}
+      </Head>
       <div class='px-10 pt-3 flex(& col) min-h-screen'>
         {renderTitle(props.title)}
 
         <div class='flex-1'>{props.children}</div>
 
         <div class='my-6'>
-          <div class='text-gray-500 text-center'>
-            © 2022-{dayjs().year()} @{' '}
-            <Link href={`mailto:${config.email}`}>{config.name}</Link>. Built
-            top on{' '}
-            <Link href='https://deno.land' target='_blank'>
-              deno
-            </Link>{' '}
-            and{' '}
-            <Link href='https://fresh.deno.dev' target='_blank'>
-              fresh
-            </Link>
-            .
-          </div>
+          <Footer />
         </div>
       </div>
     </BlankLayout>
+  )
+}
+
+function Footer() {
+  return (
+    <div class='text-gray-500 text-center'>
+      © 2022-{dayjs().year()} @{' '}
+      <Link href={`mailto:${config.email}`}>{config.name}</Link>. Built top on{' '}
+      <Link href='https://deno.land' target='_blank'>
+        deno
+      </Link>{' '}
+      and{' '}
+      <Link href='https://fresh.deno.dev' target='_blank'>
+        fresh
+      </Link>
+      .
+    </div>
   )
 }
 

@@ -2,7 +2,7 @@ import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { DefaultLayout } from '../../components/Layout.tsx'
 import { Tag } from '../../components/Tag.tsx'
-import { render } from '../../lib/markdown.ts'
+import { renderPost } from '../../lib/markdown.ts'
 import { PostMatter } from '../../types/index.ts'
 
 interface PageData {
@@ -14,7 +14,7 @@ export const handler: Handlers<PageData> = {
   async GET(req, ctx) {
     const filename = new URL(req.url).pathname
 
-    const markdown = await render<PostMatter>(`${filename}.md`)
+    const markdown = await renderPost<PostMatter>(`${filename}.md`)
 
     return ctx.render(markdown)
   }
