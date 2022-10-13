@@ -5,9 +5,10 @@ language: English
 menu:
   title:
     about: About me
-    archive: Archive
+    archive: Archives
     email: Email
     github: Github
+    home: Home
     notes: Notes
     posts: Posts
     tags: Tags
@@ -17,14 +18,13 @@ motto: >-
   get.
 name: 0x-Jerry
 not-found: Not found
+time:
+  minutes: minutes
 title:
-  index: "{{name}}'s Blog"
   archive: archive
+  index: '{{name}}''s Blog'
   notes: Notes
   posts: Posts
   tag: Tag - {{tag}}
   tags: Tags
   timeline: Timeline
-
-time:
-  minutes: minutes

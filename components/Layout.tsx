@@ -6,6 +6,7 @@ import dayjs from 'dayjs'
 import { Link } from './Link.tsx'
 import GoBack from '../islands/GoBack.tsx'
 import { Button } from './Button.tsx'
+import { t } from '../lib/i18n.ts'
 
 export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
   return (
@@ -30,10 +31,13 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
         </div>
         <div class='mt-4 flex(& col) gap-2 w-full'>
           <a href='/'>
-            <Button class='w-full'>Home</Button>
+            <Button class='w-full'>{t('menu.title.home')}</Button>
           </a>
           <a href='/tags'>
-            <Button class='w-full'>Tags</Button>
+            <Button class='w-full'>{t('menu.title.tags')}</Button>
+          </a>
+          <a href='/archives'>
+            <Button class='w-full'>{t('menu.title.archive')}</Button>
           </a>
         </div>
       </div>

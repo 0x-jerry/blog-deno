@@ -6,16 +6,16 @@ import { RenderableProps } from 'preact'
 
 export default function PostItemLink(props: RenderableProps<PostItem>) {
   return (
-    <div class='flex gap-1'>
+    <div class='flex gap-2 items-center'>
+      <Tag>{dayjs(props.data.date).format('YYYY-MM-DD')}</Tag>
+
       <Link href={`/posts/${props.path}`}>{props.data.title}</Link>
       {props.data.tags?.length && (
-        <span class='flex gap-1 items-center'>
-          <Tag color='blue'>{dayjs(props.data.date).format('YYYY-MM-DD')}</Tag>
-
+        <>
           {props.data.tags.map((tag) => (
             <Tag href={`/tags/${tag}`}>{tag}</Tag>
           ))}
-        </span>
+        </>
       )}
     </div>
   )

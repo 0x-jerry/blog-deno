@@ -1,7 +1,6 @@
 import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { DefaultLayout } from '../components/Layout.tsx'
-import PostItemLink from '../components/PostItemLink.tsx'
 import { getPosts } from '../utils/posts.ts'
 import { t } from '../lib/i18n.ts'
 import { config } from '../conf.ts'

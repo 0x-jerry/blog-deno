@@ -8,6 +8,7 @@ menu:
     archive: 归档
     email: 邮箱
     github: Github
+    home: 主页
     notes: 笔记
     posts: 文章
     tags: 标签
@@ -18,8 +19,8 @@ not-found: 丢失了
 time:
   minutes: 分钟
 title:
-  index: '{{name}} 的博客'
   archive: 归档
+  index: '{{name}} 的博客'
   notes: 笔记
   posts: 文章
   tag: 标签 - {{tag}}
