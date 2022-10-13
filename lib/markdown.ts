@@ -27,6 +27,7 @@ marked.use({
 
     if (!supportedLanguages.includes(lang)) {
       callback?.(null, code)
+      return
     }
 
     highlightText(code, lang, false).then((html: string) => {
