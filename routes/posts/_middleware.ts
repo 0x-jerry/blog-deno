@@ -1,6 +1,6 @@
 // routes/_middleware.ts
 import { MiddlewareHandlerContext } from '$fresh/server.ts'
-import * as path from "$std/path/mod.ts"
+import * as path from '$std/path/mod.ts'
 
 interface State {
   data: string
@@ -20,10 +20,11 @@ export async function handler(
     try {
       const r = await Deno.readFile(path.fromFileUrl(file))
 
-      const res = new Response(r)
-
-      res.headers.set('Cache-Control', 'max-age=604800, public')
-      return res
+      return new Response(r, {
+        headers: {
+          'cache-control': 'public, max-age=604800, immutable'
+        }
+      })
     } catch (_error) {
       // console.log(file, error)
     }
