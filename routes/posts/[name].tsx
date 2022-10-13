@@ -36,6 +36,7 @@ export default function Post({ data }: PageProps<PageData>) {
     <>
       <Head>
         <title>{data.data.title}</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/speed-highlight/core@1.1.7/src/themes/github-light.css" />
       </Head>
       <DefaultLayout title={Title()} showBack>
         <div

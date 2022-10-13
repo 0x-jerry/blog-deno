@@ -1,6 +1,8 @@
 import * as path from '$std/path/mod.ts'
 import { marked } from 'https://esm.sh/marked@4.1.1?dts'
 import { extract as frontMatter } from '$std/encoding/front_matter.ts'
+import { highlightText } from 'https://cdn.jsdelivr.net/gh/speed-highlight/core@1.1.7/src/index.js'
+import { languages, supportedLanguages } from './highlighter/languages.ts'
 
 marked.use({
   renderer: {
@@ -18,6 +20,18 @@ marked.use({
         }" >${text}</a>`
       }
     }
+  },
+  highlight(code, lang, callback) {
+    lang = lang.split(/\s+/).at(0) || ''
+    lang = languages.find((n) => n.aliases?.includes(lang))?.lang || lang
+
+    if (!supportedLanguages.includes(lang)) {
+      callback?.(null, code)
+    }
+
+    highlightText(code, lang, false).then((html: string) => {
+      callback?.(null, html)
+    })
   }
 })
 
@@ -43,12 +57,21 @@ export async function render<T>(file: string) {
     }
   })()
 
-  const result = marked.parse(data.body)
+  const result = await parseMarkdown(data.body)
 
   return {
     data: data.attrs as T,
     content: result
   }
+}
+
+function parseMarkdown(markdown: string) {
+  return new Promise<string>((resolve, reject) => {
+    marked.parse(markdown, (err, result) => {
+      if (err) reject(err)
+      else resolve(result)
+    })
+  })
 }
 
 export { frontMatter }

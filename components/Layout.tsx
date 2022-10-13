@@ -41,11 +41,11 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
   return (
     <div {...props} className='h-screen'>
       <div class='h-full w-8 border(r gray-100)'></div>
-      <div class='h-full w-72 border(r gray-100) flex(& col) items-center pt-32 px-6 bg-gray-50'>
+      <div class='h-full w-72 border(r gray-100) flex(& col) items-center px-6 bg-gray-50 pb-10 overflow-auto' style='padding-top: 25%;'>
         <a href='/'>
           <img
             class='rounded-full w-40 transition duration-1000 rotate(0 hover:[360deg])'
-            src='https://avatars.githubusercontent.com/u/14226737?v=4'
+            src={config.avatar}
           />
         </a>
         <div class='mt-4 text-3xl'>{config.name}</div>
