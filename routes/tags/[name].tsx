@@ -2,6 +2,7 @@ import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { DefaultLayout } from '../../components/Layout.tsx'
 import PostItemLink from '../../components/PostItemLink.tsx'
+import { t } from '../../lib/i18n.ts'
 import { PostItem } from '../../types/index.ts'
 import { getPosts } from '../../utils/posts.ts'
 
@@ -23,12 +24,13 @@ export const handler: Handlers<PageData> = {
 }
 
 export default function TagPage({ data }: PageProps<PageData>) {
+  const title = t('title.tag', { tag: data.tag })
   return (
     <>
       <Head>
-        <title>{data.tag}</title>
+        <title>{title}</title>
       </Head>
-      <DefaultLayout title={data.tag} showBack>
+      <DefaultLayout title={title} showBack>
         <div class='flex(& col) gap-2'>
           {data.items.map((item) => (
             <PostItemLink {...item}></PostItemLink>

@@ -5,6 +5,7 @@ import { config } from '../conf.ts'
 import dayjs from 'dayjs'
 import { Link } from './Link.tsx'
 import GoBack from '../islands/GoBack.tsx'
+import { Button } from './Button.tsx'
 
 export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
   return (
@@ -25,6 +26,14 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
         <div class='mt-2'>
           <a href={config.links.github} target='_blank'>
             <Icon name='logos:github-icon'></Icon>
+          </a>
+        </div>
+        <div class='mt-4 flex(& col) gap-2 w-full'>
+          <a href='/'>
+            <Button class='w-full'>Home</Button>
+          </a>
+          <a href='/tags'>
+            <Button class='w-full'>Tags</Button>
           </a>
         </div>
       </div>
@@ -59,6 +68,13 @@ export function DefaultLayout(
   return (
     <>
       <Head>
+        <link
+          rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css'
+          integrity='sha512-KUoB3bZ1XRBYj1QcH4BHCQjurAZnCO3WdrswyLDtp7BMwCw7dPZngSLqILf68SGgvnWHTD5pPaYrXi6wiRJ65g=='
+          crossOrigin='anonymous'
+          referrerpolicy='no-referrer'
+        />
         <script src='https://code.iconify.design/3/3.0.0/iconify.min.js'></script>
       </Head>
       <div>

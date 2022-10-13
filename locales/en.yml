@@ -18,13 +18,13 @@ motto: >-
 name: 0x-Jerry
 not-found: Not found
 title:
-  archive: "{{name}}'s archive"
   index: "{{name}}'s Blog"
-  notes: "{{name}}'s Notes"
-  posts: "{{name}}'s Posts"
-  tag: Tag - {{name}}
-  tags: "{{name}}'s Tags"
-  timeline: "{{name}}'s Timeline"
+  archive: archive
+  notes: Notes
+  posts: Posts
+  tag: Tag - {{tag}}
+  tags: Tags
+  timeline: Timeline
 
 time:
   minutes: minutes

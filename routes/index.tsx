@@ -29,13 +29,6 @@ export default function Home({ data }: PageProps<PageData>) {
     <>
       <Head>
         <title>{t('title.index', { name: config.name })}</title>
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css'
-          integrity='sha512-KUoB3bZ1XRBYj1QcH4BHCQjurAZnCO3WdrswyLDtp7BMwCw7dPZngSLqILf68SGgvnWHTD5pPaYrXi6wiRJ65g=='
-          crossOrigin='anonymous'
-          referrerpolicy='no-referrer'
-        />
       </Head>
 
       <DefaultLayout title={t('title.index', { name: config.name })}>
