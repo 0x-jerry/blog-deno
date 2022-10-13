@@ -8,7 +8,36 @@ import GoBack from '../islands/GoBack.tsx'
 import { Button } from './Button.tsx'
 import { t } from '../lib/i18n.ts'
 
+interface SidebarMenu {
+  href: string
+  icon: string
+  name: string
+}
+
 export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
+  const menus: SidebarMenu[] = [
+    {
+      href: '/',
+      icon: 'carbon:home',
+      name: t('menu.title.home')
+    },
+    {
+      href: '/tags',
+      icon: 'carbon:tag',
+      name: t('menu.title.tags')
+    },
+    {
+      href: '/archives',
+      icon: 'carbon:archive',
+      name: t('menu.title.archive')
+    },
+    {
+      href: '/about',
+      icon: 'carbon:presentation-file',
+      name: t('menu.title.about')
+    }
+  ]
+
   return (
     <div {...props} className='h-screen'>
       <div class='h-full w-8 border(r gray-100)'></div>
@@ -30,15 +59,14 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
           </a>
         </div>
         <div class='mt-4 flex(& col) gap-2 w-full'>
-          <a href='/'>
-            <Button class='w-full'>{t('menu.title.home')}</Button>
-          </a>
-          <a href='/tags'>
-            <Button class='w-full'>{t('menu.title.tags')}</Button>
-          </a>
-          <a href='/archives'>
-            <Button class='w-full'>{t('menu.title.archive')}</Button>
-          </a>
+          {menus.map((item) => (
+            <a href={item.href}>
+              <Button class='w-full'>
+                <Icon name={item.icon}></Icon>
+                <span class='flex-1'>{item.name}</span>
+              </Button>
+            </a>
+          ))}
         </div>
       </div>
     </div>
@@ -70,6 +98,34 @@ export function DefaultLayout(
   }
 
   return (
+    <BlankLayout>
+      <div class='px-10 pt-3 flex(& col) min-h-screen'>
+        {renderTitle(props.title)}
+
+        <div class='flex-1'>{props.children}</div>
+
+        <div class='my-6'>
+          <div class='text-gray-500 text-center'>
+            © 2022-{dayjs().year()} @{' '}
+            <Link href={`mailto:${config.email}`}>{config.name}</Link>. Built
+            top on{' '}
+            <Link href='https://deno.land' target='_blank'>
+              deno
+            </Link>{' '}
+            and{' '}
+            <Link href='https://fresh.deno.dev' target='_blank'>
+              fresh
+            </Link>
+            .
+          </div>
+        </div>
+      </div>
+    </BlankLayout>
+  )
+}
+
+export function BlankLayout(props: RenderableProps<{}>) {
+  return (
     <>
       <Head>
         <link
@@ -83,27 +139,7 @@ export function DefaultLayout(
       </Head>
       <div>
         <Sidebar class='hidden lg:flex fixed left-0 top-0'></Sidebar>
-        <div class='ml-0 lg:ml-80 px-10 pt-3 min-h-screen flex(& col)'>
-          {renderTitle(props.title)}
-
-          <div class='flex-1'>{props.children}</div>
-
-          <div class='my-6'>
-            <div class='text-gray-500 text-center'>
-              © 2022-{dayjs().year()} @{' '}
-              <Link href={`mailto:${config.email}`}>{config.name}</Link>. Built
-              top on{' '}
-              <Link href='https://deno.land' target='_blank'>
-                deno
-              </Link>{' '}
-              and{' '}
-              <Link href='https://fresh.deno.dev' target='_blank'>
-                fresh
-              </Link>
-              .
-            </div>
-          </div>
-        </div>
+        <div class='ml-0 lg:ml-80'>{props.children}</div>
       </div>
     </>
   )

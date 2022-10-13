@@ -1,4 +1,3 @@
-import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { DefaultLayout } from '../../components/Layout.tsx'
 import PostItemLink from '../../components/PostItemLink.tsx'
@@ -26,17 +25,12 @@ export const handler: Handlers<PageData> = {
 export default function TagPage({ data }: PageProps<PageData>) {
   const title = t('title.tag', { tag: data.tag })
   return (
-    <>
-      <Head>
-        <title>{title}</title>
-      </Head>
-      <DefaultLayout title={title} showBack>
-        <div class='flex(& col) gap-2'>
-          {data.items.map((item) => (
-            <PostItemLink {...item}></PostItemLink>
-          ))}
-        </div>
-      </DefaultLayout>
-    </>
+    <DefaultLayout title={title} showBack>
+      <div class='flex(& col) gap-2'>
+        {data.items.map((item) => (
+          <PostItemLink {...item}></PostItemLink>
+        ))}
+      </div>
+    </DefaultLayout>
   )
 }

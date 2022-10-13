@@ -1,4 +1,3 @@
-import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { DefaultLayout } from '../components/Layout.tsx'
 import PostItemLink from '../components/PostItemLink.tsx'
@@ -60,35 +59,30 @@ export default function ArchivesPage({ data }: PageProps<PageData>) {
   }
 
   return (
-    <>
-      <Head>
-        <title>{title}</title>
-      </Head>
-      <DefaultLayout title={title} showBack>
-        <div class='flex(& col) gap-4'>
-          {archives.map((yearItem) => {
-            return (
-              <>
-                {yearItem.months.map((monthItem) => {
-                  return (
-                    <div>
-                      <h2 class='text-2xl my-2'>
-                        {yearItem.year} - {monthItem.month}
-                      </h2>
+    <DefaultLayout title={title} showBack>
+      <div class='flex(& col) gap-4'>
+        {archives.map((yearItem) => {
+          return (
+            <>
+              {yearItem.months.map((monthItem) => {
+                return (
+                  <div>
+                    <h2 class='text-2xl my-2'>
+                      {yearItem.year} - {monthItem.month}
+                    </h2>
 
-                      <div class='flex(& col) gap-2 pl-4'>
-                        {monthItem.posts.map((item) => (
-                          <PostItemLink {...item}></PostItemLink>
-                        ))}
-                      </div>
+                    <div class='flex(& col) gap-2 pl-4'>
+                      {monthItem.posts.map((item) => (
+                        <PostItemLink {...item}></PostItemLink>
+                      ))}
                     </div>
-                  )
-                })}
-              </>
-            )
-          })}
-        </div>
-      </DefaultLayout>
-    </>
+                  </div>
+                )
+              })}
+            </>
+          )
+        })}
+      </div>
+    </DefaultLayout>
   )
 }

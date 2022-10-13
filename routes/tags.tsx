@@ -1,4 +1,3 @@
-import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { DefaultLayout } from '../components/Layout.tsx'
 import { getPosts } from '../utils/posts.ts'
@@ -30,17 +29,12 @@ export default function TagsPage({ data }: PageProps<PageData>) {
   const title = t('title.tags', { name: config.name })
 
   return (
-    <>
-      <Head>
-        <title>{title}</title>
-      </Head>
-      <DefaultLayout title={title} showBack>
-        <div class='flex(& wrap) gap-2 justify-center'>
-          {data.tags.map((item) => (
-            <Tag href={`/tags/${item}`} >{item}</Tag>
-          ))}
-        </div>
-      </DefaultLayout>
-    </>
+    <DefaultLayout title={title} showBack>
+      <div class='flex(& wrap) gap-2 justify-center'>
+        {data.tags.map((item) => (
+          <Tag href={`/tags/${item}`}>{item}</Tag>
+        ))}
+      </div>
+    </DefaultLayout>
   )
 }
