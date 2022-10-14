@@ -1,27 +1,3 @@
-interface ILanguage {
-  lang: string
-  aliases?: string[]
-}
-
-export const languages: ILanguage[] = [
-  {
-    lang: 'ts',
-    aliases: ['typescript']
-  },
-  {
-    lang: 'js',
-    aliases: ['javascript']
-  },
-  {
-    lang: 'yaml',
-    aliases: ['yml']
-  },
-  {
-    lang: 'bash',
-    aliases: ['sh']
-  }
-]
-
 export const supportedLanguages = [
   'asm',
   'bash',

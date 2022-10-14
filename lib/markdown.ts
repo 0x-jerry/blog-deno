@@ -1,8 +1,32 @@
 import * as path from '$std/path/mod.ts'
 import { marked } from 'https://esm.sh/marked@4.1.1?dts'
 import { extract as frontMatter } from '$std/encoding/front_matter.ts'
-import { highlightText } from 'https://cdn.jsdelivr.net/gh/speed-highlight/core@1.1.7/src/index.js'
-import { languages, supportedLanguages } from './highlighter/languages.ts'
+import { highlightText } from 'https://cdn.jsdelivr.net/gh/speed-highlight/core/src/index.js'
+import { supportedLanguages } from './highlighter/languages.ts'
+
+const highlightLangAliases: Record<string, string[]> = {
+  ts: ['typescript'],
+  js: ['javascript'],
+  yaml: ['yml'],
+  docker: ['dockerfile'],
+  bash: ['sh']
+}
+
+function getLang(lang?: string) {
+  if (!lang) return 'bash'
+
+  lang = lang.split(/\s+/).at(0)
+  lang = lang?.toLowerCase()
+
+  const entries = Object.entries(highlightLangAliases)
+  for (const [id, aliases] of entries) {
+    if (aliases.includes(lang!)) {
+      return id
+    }
+  }
+
+  return lang || 'bash'
+}
 
 marked.use({
   renderer: {
@@ -19,18 +43,22 @@ marked.use({
           title || href
         }" >${text}</a>`
       }
+    },
+    code(code, lang, _isEscaped) {
+      lang = getLang(lang)
+
+      return `<pre class="language-${lang} shj-mode-header shj-lang-${lang} shj-multiline" data-lang="${lang}">${code}</pre>`
     }
   },
   highlight(code, lang, callback) {
-    lang = lang.split(/\s+/).at(0) || ''
-    lang = languages.find((n) => n.aliases?.includes(lang))?.lang || lang
+    lang = getLang(lang)!
 
     if (!supportedLanguages.includes(lang)) {
       callback?.(null, code)
       return
     }
 
-    highlightText(code, lang, false).then((html: string) => {
+    highlightText(code, lang, true).then((html: string) => {
       callback?.(null, html)
     })
   }
