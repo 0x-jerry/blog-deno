@@ -32,7 +32,7 @@ export const handler: Handlers<PageData> = {
 }
 
 export default function ArchivesPage({ data }: PageProps<PageData>) {
-  const title = t('title.tags', { name: config.name })
+  const title = t('title.archive', { name: config.name })
 
   const archives: ArchiveYear[] = []
 
@@ -60,14 +60,14 @@ export default function ArchivesPage({ data }: PageProps<PageData>) {
 
   return (
     <DefaultLayout title={title} showBack>
-      <div class='flex(& col) gap-4'>
+      <div class='flex(& col) gap-0 lg:gap-4'>
         {archives.map((yearItem) => {
           return (
             <>
               {yearItem.months.map((monthItem) => {
                 return (
                   <div>
-                    <h2 class='text-2xl my-2'>
+                    <h2 class='text-xl lg:text-2xl my-2'>
                       {yearItem.year} - {monthItem.month}
                     </h2>
 

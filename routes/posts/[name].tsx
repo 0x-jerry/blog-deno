@@ -21,24 +21,29 @@ export const handler: Handlers<PageData> = {
 }
 
 export default function Post({ data }: PageProps<PageData>) {
-  const Title = () => (
-    <>
-      <div class='flex gap-1 items-end'>
-        <h1 class='text-2xl'>{data.data.title}</h1>
+  const Tags = () => {
+    const tags = data.data.tags
+    if (!tags?.length) return
+    return (
+      <div class='flex(& wrap) gap-1 mb-4'>
         {data.data.tags?.map((tag) => (
           <Tag href={`/tags/${tag}`}>{tag}</Tag>
         ))}
       </div>
-    </>
-  )
+    )
+  }
 
   return (
     <>
       <Head>
-        <title>{data.data.title}</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/speed-highlight/core@1.1.7/src/themes/github-light.css" />
+        <link
+          rel='stylesheet'
+          href='https://cdn.jsdelivr.net/gh/speed-highlight/core@1.1.7/src/themes/github-light.css'
+        />
       </Head>
-      <DefaultLayout title={Title()} showBack>
+      <DefaultLayout title={data.data.title} showBack>
+        {Tags()}
+
         <div
           class='markdown-body'
           dangerouslySetInnerHTML={{ __html: data.content }}
