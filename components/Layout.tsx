@@ -42,20 +42,19 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
     <div {...props} className='h-12 lg:h-screen'>
       <div class='h-full w-8 border(r gray-100) hidden lg:block'></div>
       <div
-        class='flex items-center border(b gray-100) w-full gap-4 px-4 bg-gray-50 lg:(h-full w-72 border(r gray-100) flex-col px-6 pb-10 overflow-auto)'
+        class='flex items-center border(b gray-100) w-full gap-2 px-4 bg-gray-50 lg:(h-full w-72 border(r gray-100) flex-col px-6 pb-10 overflow-auto)'
       >
-        <a href='/' class='h-5/6 rounded-full overflow-hidden'>
+        <a href='/' class='rounded-full overflow-hidden h-2/3 md:h-4/5 lg:(h-auto w-4/5 mt-20)'>
           <img
             class='transition duration-1000 rotate(0 hover:[360deg]) w-full h-full object-cover'
             src={config.avatar}
           />
         </a>
-        <div class='text-xl whitespace-nowrap lg:(text-3xl mt-4)'>{config.name}</div>
+        <div class='text-xl whitespace-nowrap flex-1 md:flex-none lg:(text-3xl)'>{config.name}</div>
         <div
-          class='hidden text-gray-400 text-xs md:block lg:(my-2)'
+          class='hidden text-gray-400 text-xs flex(1 shrink-10) md:(block) lg:(my-2 flex-none)'
           dangerouslySetInnerHTML={{ __html: config.motto }}
         ></div>
-        <div class='flex-1 lg:hidden'></div>
         <div class='lg:mt-2'>
           <a href={config.links.github} target='_blank'>
             <Icon name='logos:github-icon'></Icon>
