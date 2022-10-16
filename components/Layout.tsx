@@ -99,6 +99,12 @@ export function BlankLayout(props: RenderableProps<{}>) {
           referrerpolicy='no-referrer'
         />
         <script src='https://code.iconify.design/3/3.0.0/iconify.min.js'></script>
+        <script
+          async
+          defer
+          data-website-id='11ac5c86-f341-454d-8ce8-09acd333bf07'
+          src='https://umami.0x-jerry.icu/umami.js'
+        ></script>
       </Head>
       <NinjaBox></NinjaBox>
       <div>
