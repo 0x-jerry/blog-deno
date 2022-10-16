@@ -1,7 +1,7 @@
 import * as path from '$std/path/mod.ts'
 import { marked } from 'https://esm.sh/marked@4.1.1?dts'
 import { extract as frontMatter } from '$std/encoding/front_matter.ts'
-import { highlightText } from 'https://cdn.jsdelivr.net/gh/speed-highlight/core@main/src/index.js'
+import { highlightText } from 'https://cdn.jsdelivr.net/gh/0x-jerry/speed-highlight-core/src/index.js'
 import { supportedLanguages } from './highlighter/languages.ts'
 
 const highlightLangAliases: Record<string, string[]> = {
