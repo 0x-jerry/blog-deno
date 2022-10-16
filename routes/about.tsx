@@ -54,7 +54,7 @@ export default function AboutPage({ data }: PageProps<PageData>) {
               src='/api/random'
             ></img>
             <div
-              class='w-4/5 absolute top-1/2 left-1/2 translate(-x-1/2 -y-1/2) bg(black opacity-10) p-10 rounded-lg backdrop(filter blur-sm) text(white)'
+              class='w-4/5 absolute top-1/2 left-1/2 translate(-x-1/2 -y-1/2) bg(black opacity-10) p-4 rounded-lg backdrop(filter blur-sm) text(white xs) sm:(text-sm p-6) md:(p-10)'
               style='text-shadow: 0 0 2px rgb(240, 240, 240);'
             >
               <p class='italic'>「 {data.hitokoto} 」</p>

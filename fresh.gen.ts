@@ -18,6 +18,7 @@ import * as $11 from "./routes/tags/[name].tsx";
 import * as $$0 from "./islands/ChangeLng.tsx";
 import * as $$1 from "./islands/GoBack.tsx";
 import * as $$2 from "./islands/NinjaBox.tsx";
+import * as $$3 from "./islands/NinjaButton.tsx";
 
 const manifest = {
   routes: {
@@ -38,6 +39,7 @@ const manifest = {
     "./islands/ChangeLng.tsx": $$0,
     "./islands/GoBack.tsx": $$1,
     "./islands/NinjaBox.tsx": $$2,
+    "./islands/NinjaButton.tsx": $$3,
   },
   baseUrl: import.meta.url,
   config,

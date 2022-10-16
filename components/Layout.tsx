@@ -8,6 +8,7 @@ import GoBack from '../islands/GoBack.tsx'
 import { Button } from './Button.tsx'
 import { t } from '../lib/i18n.ts'
 import NinjaBox from '../islands/NinjaBox.tsx'
+import NinjaButton from '../islands/NinjaButton.tsx'
 
 interface SidebarMenu {
   href: string
@@ -34,7 +35,7 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
     },
     {
       href: '/about',
-      icon: 'carbon:presentation-file',
+      icon: 'carbon:user-profile',
       name: t('menu.title.about')
     }
   ]
@@ -64,7 +65,10 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
             <Icon name='logos:github-icon'></Icon>
           </a>
         </div>
-        <div class='flex gap-2 lg:(flex-col w-full)'>
+        <div class='lg:(block w-full)'>
+          <NinjaButton> </NinjaButton>
+        </div>
+        <div class='gap-2 hidden sm:(flex) lg:(flex-col w-full)'>
           {menus.map((item) => (
             <a href={item.href}>
               <Button class='w-full'>
@@ -83,6 +87,10 @@ export function BlankLayout(props: RenderableProps<{}>) {
   return (
     <>
       <Head>
+        <meta charSet='UTF-8' />
+        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+
         <link
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css'
