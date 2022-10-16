@@ -19,7 +19,8 @@ export async function getPosts(opt?: { includeUnpublished?: boolean }) {
 
       list.push({
         path: name,
-        data: matter.attrs
+        data: matter.attrs,
+        content: matter.body,
       })
     }
   }

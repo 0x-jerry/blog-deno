@@ -19,6 +19,7 @@ not-found: 丢失了
 time:
   minutes: 分钟
 title:
+  about: 关于我
   archive: 归档
   index: '{{name}} 的博客'
   notes: 笔记

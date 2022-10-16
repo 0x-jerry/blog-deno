@@ -9,4 +9,5 @@ export interface PostMatter {
 export interface PostItem {
   path: string
   data: PostMatter
+  content: string
 }

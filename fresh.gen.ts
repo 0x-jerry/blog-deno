@@ -8,14 +8,16 @@ import * as $1 from "./routes/_500.tsx";
 import * as $2 from "./routes/_middleware.ts";
 import * as $3 from "./routes/about.tsx";
 import * as $4 from "./routes/api/random.ts";
-import * as $5 from "./routes/archives.tsx";
-import * as $6 from "./routes/index.tsx";
-import * as $7 from "./routes/posts/[name].tsx";
-import * as $8 from "./routes/posts/_middleware.ts";
-import * as $9 from "./routes/tags.tsx";
-import * as $10 from "./routes/tags/[name].tsx";
+import * as $5 from "./routes/api/search.ts";
+import * as $6 from "./routes/archives.tsx";
+import * as $7 from "./routes/index.tsx";
+import * as $8 from "./routes/posts/[name].tsx";
+import * as $9 from "./routes/posts/_middleware.ts";
+import * as $10 from "./routes/tags.tsx";
+import * as $11 from "./routes/tags/[name].tsx";
 import * as $$0 from "./islands/ChangeLng.tsx";
 import * as $$1 from "./islands/GoBack.tsx";
+import * as $$2 from "./islands/NinjaBox.tsx";
 
 const manifest = {
   routes: {
@@ -24,16 +26,18 @@ const manifest = {
     "./routes/_middleware.ts": $2,
     "./routes/about.tsx": $3,
     "./routes/api/random.ts": $4,
-    "./routes/archives.tsx": $5,
-    "./routes/index.tsx": $6,
-    "./routes/posts/[name].tsx": $7,
-    "./routes/posts/_middleware.ts": $8,
-    "./routes/tags.tsx": $9,
-    "./routes/tags/[name].tsx": $10,
+    "./routes/api/search.ts": $5,
+    "./routes/archives.tsx": $6,
+    "./routes/index.tsx": $7,
+    "./routes/posts/[name].tsx": $8,
+    "./routes/posts/_middleware.ts": $9,
+    "./routes/tags.tsx": $10,
+    "./routes/tags/[name].tsx": $11,
   },
   islands: {
     "./islands/ChangeLng.tsx": $$0,
     "./islands/GoBack.tsx": $$1,
+    "./islands/NinjaBox.tsx": $$2,
   },
   baseUrl: import.meta.url,
   config,

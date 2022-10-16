@@ -21,6 +21,7 @@ not-found: Not found
 time:
   minutes: minutes
 title:
+  about: About me
   archive: Archive
   index: '{{name}}''s Blog'
   notes: Notes

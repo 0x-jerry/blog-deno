@@ -7,6 +7,7 @@ import { Link } from './Link.tsx'
 import GoBack from '../islands/GoBack.tsx'
 import { Button } from './Button.tsx'
 import { t } from '../lib/i18n.ts'
+import NinjaBox from '../islands/NinjaBox.tsx'
 
 interface SidebarMenu {
   href: string
@@ -91,6 +92,7 @@ export function BlankLayout(props: RenderableProps<{}>) {
         />
         <script src='https://code.iconify.design/3/3.0.0/iconify.min.js'></script>
       </Head>
+      <NinjaBox></NinjaBox>
       <div>
         <Sidebar class='flex lg:(fixed left-0 top-0)'></Sidebar>
         <div class='ml-0 lg:ml-80'>{props.children}</div>
