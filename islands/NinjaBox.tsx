@@ -64,8 +64,6 @@ export default function NinjaBox() {
     })
 
     items.value = [...resultItems, ...defaultItems]
-
-    console.log(items)
   }
 
   return (
@@ -77,7 +75,7 @@ export default function NinjaBox() {
         />
         <script
           type='module'
-          src='https://unpkg.com/@0x-jerry/ninja-keys'
+          src='https://esm.sh/@0x-jerry/ninja-keys@1.2.5'
         ></script>
       </Head>
       <ninja-keys onChange={onChange} data={items.value} placeholder="Type something to search article..." hideBreadcrumbs></ninja-keys>
