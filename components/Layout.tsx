@@ -161,7 +161,8 @@ function Footer() {
   return (
     <div class='text-gray-500 text-center'>
       © 2022-{dayjs().year()} @{' '}
-      <Link href={`mailto:${config.email}`}>{config.name}</Link>. Built top on{' '}
+      <Link href={`mailto:${config.email}`}>{config.name}</Link>. Built on top
+      of{' '}
       <Link href='https://deno.land' target='_blank'>
         deno
       </Link>{' '}
