@@ -2,7 +2,7 @@
 
 [Preview][blog]
 
-Dead simple blog, built on top of [deno] and [fresh] framework.
+A blog, built on top of [deno] and [fresh] framework.
 
 ## Features
 
