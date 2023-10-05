@@ -198,10 +198,17 @@ export function DefaultLayout(
       <div class='px-4 lg:px-10 pt-3 flex(& col) min-h-screen'>
         {renderTitle(props.title)}
 
-        <div class='flex-1'>{props.children}</div>
+        <div class='flex-1'>
+          {props.children}
+          {props.comments && (
+            <>
+              <div class='hr h-[1px] w-[50%] m-auto my-6 bg-[#eee]'></div>
+              <div class='giscus mb-3'></div>
+            </>
+          )}
+        </div>
 
         <div class='my-6'>
-          {props.comments && <div class='giscus mb-3'></div>}
           <Footer />
         </div>
       </div>

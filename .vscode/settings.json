@@ -2,6 +2,9 @@
   "deno.enable": true,
   "deno.lint": true,
   "editor.defaultFormatter": "denoland.vscode-deno",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
 
   "i18n-ally.enabledFrameworks": ["react"],
   "i18n-ally.keystyle": "nested",
