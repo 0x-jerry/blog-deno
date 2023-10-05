@@ -1,14 +1,15 @@
 {
   "imports": {
-    "$fresh/": "https://deno.land/x/fresh@1.1.2/",
-    "$std/": "https://deno.land/std@0.159.0/",
-    "preact": "https://esm.sh/preact@10.11.0",
-    "preact/": "https://esm.sh/preact@10.11.0/",
-    "preact-render-to-string": "https://esm.sh/*preact-render-to-string@5.2.4",
-    "@preact/signals": "https://esm.sh/*@preact/signals@1.0.3",
-    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.0.1",
-    "twind": "https://esm.sh/twind@0.16.17",
-    "twind/": "https://esm.sh/twind@0.16.17/",
-    "dayjs": "https://esm.sh/dayjs@1.11.5"
+    "$fresh/": "https://deno.land/x/fresh@1.4.3/",
+    "$std/": "https://deno.land/std@0.203.0/",
+    "preact": "https://esm.sh/preact@10.18.1",
+    "preact/": "https://esm.sh/preact@10.18.1/",
+    "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.2",
+    "@preact/signals": "https://esm.sh/*@preact/signals@1.2.1",
+    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.0",
+    "twind": "https://esm.sh/twind@1.0.7",
+    "twind/": "https://esm.sh/twind@1.0.7/",
+    "dayjs": "https://esm.sh/dayjs@1.11.10",
+    "i18next": "https://esm.sh/i18next@23.5.1/"
   }
 }

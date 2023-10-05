@@ -6,5 +6,9 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
+  },
+  "fmt": {
+    "singleQuote": true,
+    "semiColons": false
   }
 }

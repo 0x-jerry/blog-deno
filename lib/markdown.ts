@@ -1,6 +1,6 @@
 import * as path from '$std/path/mod.ts'
 import { marked } from 'https://esm.sh/marked@4.1.1?dts'
-import { extract as frontMatter } from '$std/encoding/front_matter.ts'
+import { extract as frontMatter } from '$std/front_matter/any.ts'
 import { highlightText } from 'https://cdn.jsdelivr.net/gh/0x-jerry/speed-highlight-core/src/index.js'
 import { supportedLanguages } from './highlighter/languages.ts'
 
@@ -9,7 +9,7 @@ const highlightLangAliases: Record<string, string[]> = {
   js: ['javascript'],
   yaml: ['yml'],
   docker: ['dockerfile'],
-  bash: ['sh']
+  bash: ['sh'],
 }
 
 function getLang(lang?: string) {
@@ -48,7 +48,7 @@ marked.use({
       lang = getLang(lang)
 
       return `<pre class="language-${lang} shj-mode-header shj-lang-${lang} shj-multiline" data-lang="${lang}">${code}</pre>`
-    }
+    },
   },
   highlight(code, lang, callback) {
     lang = getLang(lang)!
@@ -61,7 +61,7 @@ marked.use({
     highlightText(code, lang, true).then((html: string) => {
       callback?.(null, html)
     })
-  }
+  },
 })
 
 export async function renderPost<T>(file: string) {
@@ -81,7 +81,7 @@ export async function render<T>(file: string) {
     } catch (_error) {
       return {
         body: txt,
-        attrs: {}
+        attrs: {},
       }
     }
   })()
@@ -90,7 +90,7 @@ export async function render<T>(file: string) {
 
   return {
     data: data.attrs as T,
-    content: result
+    content: result,
   }
 }
 

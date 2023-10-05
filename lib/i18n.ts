@@ -1,5 +1,5 @@
-import i18next, { TFunction } from 'https://esm.sh/i18next@21.10.0'
-import { parse } from '$std/encoding/yaml.ts'
+import i18next, { TFunction } from 'i18next'
+import { parse } from '$std/yaml/mod.ts'
 import { fromFileUrl } from '$std/path/mod.ts'
 
 async function loadLng(lng: string) {
@@ -19,13 +19,13 @@ await i18next.init({
       translation: await loadLng('zh'),
     },
     en: {
-      translation: await loadLng('en')
-    }
-  }
+      translation: await loadLng('en'),
+    },
+  },
 })
 
 export const i18nConf = {
-  lng: Intl.DateTimeFormat().resolvedOptions().locale
+  lng: Intl.DateTimeFormat().resolvedOptions().locale,
 }
 
 export const t: TFunction = (...opt) => {

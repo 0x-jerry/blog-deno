@@ -17,16 +17,14 @@ export const handler: Handlers<PageData> = {
     posts = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 
     return ctx.render({ list: posts })
-  }
+  },
 }
 
 export default function Home({ data }: PageProps<PageData>) {
   return (
     <DefaultLayout title={t('title.index', { name: config.name })}>
       <div class='flex(& col) gap-2'>
-        {data.list.map((item) => (
-          <PostItemLink {...item}></PostItemLink>
-        ))}
+        {data.list.map((item) => <PostItemLink {...item}></PostItemLink>)}
       </div>
     </DefaultLayout>
   )
