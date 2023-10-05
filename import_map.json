@@ -7,8 +7,6 @@
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.2",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.1",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.0",
-    "twind": "https://esm.sh/twind@1.0.7",
-    "twind/": "https://esm.sh/twind@1.0.7/",
     "dayjs": "https://esm.sh/dayjs@1.11.10",
     "i18next": "https://esm.sh/i18next@23.5.1/"
   }
