@@ -49,7 +49,7 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
           class='rounded-full overflow-hidden h-2/3 md:h-4/5 lg:(h-auto w-4/5 mt-20)'
         >
           <img
-            class='transition duration-1000 rotate(0 hover:[360deg]) w-full h-full object-cover'
+            class='transition duration-1000 rotate(0 hover:[360deg]) w-full h-full object-cover aspect-[1/1]'
             src={config.avatar}
           />
         </a>
