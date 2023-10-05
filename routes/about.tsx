@@ -21,7 +21,7 @@ export interface PageData {
 
 export const handler: Handlers<PageData> = {
   async GET(_, ctx) {
-    const resp = await fetch('https://api.0x-jerry.icu/hitokoto?t=' + Date.now)
+    const resp = await fetch('https://0x-jerry.icu/api/hitokoto?t=' + Date.now)
 
     return ctx.render(await resp.json())
   }
