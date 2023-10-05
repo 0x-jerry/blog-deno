@@ -26,9 +26,9 @@ export const handler: Handlers<PageData> = {
     const posts = await getPosts()
 
     return ctx.render({
-      posts
+      posts,
     })
-  }
+  },
 }
 
 export default function ArchivesPage({ data }: PageProps<PageData>) {

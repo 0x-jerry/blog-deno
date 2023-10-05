@@ -24,7 +24,7 @@ export const handler: Handlers<PageData> = {
     const resp = await fetch('https://0x-jerry.icu/api/hitokoto?t=' + Date.now)
 
     return ctx.render(await resp.json())
-  }
+  },
 }
 
 export default function AboutPage({ data }: PageProps<PageData>) {
@@ -42,7 +42,8 @@ export default function AboutPage({ data }: PageProps<PageData>) {
             <div
               class='markdown-body'
               dangerouslySetInnerHTML={{ __html: config.about.content }}
-            ></div>
+            >
+            </div>
           </div>
 
           <div
@@ -52,7 +53,8 @@ export default function AboutPage({ data }: PageProps<PageData>) {
             <img
               class='block object-cover w-full h-full'
               src='/api/random'
-            ></img>
+            >
+            </img>
             <div
               class='w-4/5 absolute top-1/2 left-1/2 translate(-x-1/2 -y-1/2) bg(black opacity-10) p-4 rounded-lg backdrop(filter blur-sm) text(white xs) sm:(text-sm p-6) md:(p-10)'
               style='text-shadow: 0 0 2px rgb(240, 240, 240);'

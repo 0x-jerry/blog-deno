@@ -21,23 +21,23 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
     {
       href: '/',
       icon: 'carbon:home',
-      name: t('menu.title.home')
+      name: t('menu.title.home'),
     },
     {
       href: '/tags',
       icon: 'carbon:tag',
-      name: t('menu.title.tags')
+      name: t('menu.title.tags'),
     },
     {
       href: '/archives',
       icon: 'carbon:archive',
-      name: t('menu.title.archive')
+      name: t('menu.title.archive'),
     },
     {
       href: '/about',
       icon: 'carbon:user-profile',
-      name: t('menu.title.about')
-    }
+      name: t('menu.title.about'),
+    },
   ]
 
   return (
@@ -59,14 +59,15 @@ export function Sidebar(props: RenderableProps<JSX.HTMLAttributes>) {
         <div
           class='hidden text-gray-400 text-xs flex(1 shrink-10) md:(block) lg:(my-2 flex-none)'
           dangerouslySetInnerHTML={{ __html: config.motto }}
-        ></div>
+        >
+        </div>
         <div class='lg:mt-2'>
           <a href={config.links.github} target='_blank'>
             <Icon name='logos:github-icon'></Icon>
           </a>
         </div>
         <div class='lg:(block w-full)'>
-          <NinjaButton> </NinjaButton>
+          <NinjaButton></NinjaButton>
         </div>
         <div class='gap-2 hidden sm:(flex) lg:(flex-col w-full)'>
           {menus.map((item) => (
@@ -124,13 +125,36 @@ export function BlankLayout(props: RenderableProps<{}>) {
         />
         <link rel='stylesheet' href='/common.css' />
 
-        <script src='https://code.iconify.design/3/3.0.0/iconify.min.js'></script>
-        <script
+        <script src='https://code.iconify.design/3/3.0.0/iconify.min.js'>
+        </script>
+
+        {
+          /* <script
           async
           defer
           data-website-id='11ac5c86-f341-454d-8ce8-09acd333bf07'
           src='https://umami.0x-jerry.icu/umami.js'
-        ></script>
+        ></script> */
+        }
+
+        <script
+          src='https://giscus.0x-jerry.icu/client.js'
+          data-repo='0x-jerry/blog'
+          data-repo-id='R_kgDOIMPPlA'
+          data-category='General'
+          data-category-id='DIC_kwDOIMPPlM4CZ4Sc'
+          data-mapping='pathname'
+          data-strict='0'
+          data-reactions-enabled='1'
+          data-emit-metadata='1'
+          data-input-position='top'
+          data-theme='preferred_color_scheme'
+          data-lang='en'
+          data-loading='lazy'
+          crossorigin='anonymous'
+          async
+        >
+        </script>
       </Head>
       <NinjaBox></NinjaBox>
       <div>
@@ -142,17 +166,18 @@ export function BlankLayout(props: RenderableProps<{}>) {
 }
 
 export function DefaultLayout(
-  props: RenderableProps<{ title?: string | JSX.Element; showBack?: boolean }>
+  props: RenderableProps<{
+    title?: string | JSX.Element
+    showBack?: boolean
+    comments?: boolean
+  }>,
 ) {
   const renderTitle = (title?: string | JSX.Element) => {
     if (!title) return ''
 
-    const titleEl =
-      typeof title === 'string' ? (
-        <h1 class='text-xl lg:text-2xl'>{props.title}</h1>
-      ) : (
-        title
-      )
+    const titleEl = typeof title === 'string'
+      ? <h1 class='text-xl lg:text-2xl'>{props.title}</h1>
+      : title
 
     return (
       <>
@@ -176,6 +201,7 @@ export function DefaultLayout(
         <div class='flex-1'>{props.children}</div>
 
         <div class='my-6'>
+          {props.comments && <div class='giscus mb-3'></div>}
           <Footer />
         </div>
       </div>

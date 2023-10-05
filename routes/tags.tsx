@@ -20,9 +20,9 @@ export const handler: Handlers<PageData> = {
     })
 
     return ctx.render({
-      tags: [...new Set(tags)]
+      tags: [...new Set(tags)],
     })
-  }
+  },
 }
 
 export default function TagsPage({ data }: PageProps<PageData>) {
@@ -31,9 +31,7 @@ export default function TagsPage({ data }: PageProps<PageData>) {
   return (
     <DefaultLayout title={title} showBack>
       <div class='flex(& wrap) gap-2 justify-center'>
-        {data.tags.map((item) => (
-          <Tag href={`/tags/${item}`}>{item}</Tag>
-        ))}
+        {data.tags.map((item) => <Tag href={`/tags/${item}`}>{item}</Tag>)}
       </div>
     </DefaultLayout>
   )
